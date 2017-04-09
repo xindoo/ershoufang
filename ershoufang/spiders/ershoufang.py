@@ -10,7 +10,7 @@ class ershoufangSpider(scrapy.Spider):
         for house in houses:
             yield {
                 'region': house.xpath(".//div[@class='houseInfo']/a/text()").extract(),
-                //'url':house.xpath(".//a[@class='img ']/@href").extract(),
+                # 'url':house.xpath(".//a[@class='img ']/@href").extract(),
                 'houseInfo':house.xpath(".//div[@class='houseInfo']/text()").extract(),
                 'unitPrice':house.xpath(".//div[@class='unitPrice']/span").re("\d+.\d+"),
                 'totalPrice':house.xpath(".//div[@class='totalPrice']/span").re("\d+.\d+")
