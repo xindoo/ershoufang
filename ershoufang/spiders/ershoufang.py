@@ -7,13 +7,17 @@ class ershoufangSpider(scrapy.Spider):
 
     def parse(self, response):
         houses = response.xpath(".//ul[@class='sellListContent']/li")
+        response.dead
         for house in houses:
             yield {
                 'region': house.xpath(".//div[@class='houseInfo']/a/text()").extract(),
                 'url':house.xpath(".//a[@class='img ']/@href").extract(),
                 'houseInfo':house.xpath(".//div[@class='houseInfo']/text()").extract(),
                 'unitPrice':house.xpath(".//div[@class='unitPrice']/span").re("\d+.\d+"),
-                'totalPrice':house.xpath(".//div[@class='totalPrice']/span").re("\d+.\d+")
+                'totalPrice':house.xpath(".//div[@class='totalPrice']/span").re("\d+.\d+"),
+                'attention': house.xpath(".//div[@class='followInfo']/text()").re("\d+")[0],
+                'visited': house.xpath(".//div[@class='followInfo']/text()").re("\d+")[1],
+                'publishday': house.xpath(".//div[@class='followInfo']/text()").re("\d+")[2]
             }
         page = response.xpath("//div[@class='page-box house-lst-page-box'][@page-data]").re("\d+")
         if None != page and page[0] != page[1]:
