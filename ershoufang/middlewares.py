@@ -65,7 +65,7 @@ class RotateUserAgentMiddleware(UserAgentMiddleware):
     def process_request(self, request, spider):
         ua = random.choice(self.user_agent_list)
         if ua:
-            print ua, '-----------------yyyyyyyyyyyyyyyyyyyyyyyyy'
+            # print ua, '-----------------yyyyyyyyyyyyyyyyyyyyyyyyy'
             request.headers.setdefault('User-Agent', ua)
 
             # the default user_agent_list composes chrome,I E,firefox,Mozilla,opera,netscape
@@ -105,14 +105,19 @@ class RandomUserAgent(object):
 		print "**************************" + random.choice(self.agents)
 		request.headers.setdefault('User-Agent', random.choice(self.agents))
 
+# class ProxyMiddleware(object):
+# 	def process_request(self, request, spider):
+# 		proxy = random.choice(PROXIES)
+# 		if proxy['user_pass'] is not None:
+# 			request.meta['proxy'] = "http://%s" % proxy['ip_port']
+# 			encoded_user_pass = base64.encodestring(proxy['user_pass'])
+# 			request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
+# 			# print "**************ProxyMiddleware have pass************" + proxy['ip_port']
+# 		else:
+# 			print "**************ProxyMiddleware no pass************" + proxy['ip_port']
+# 			request.meta['proxy'] = "http://%s" % proxy['ip_port']
+
 class ProxyMiddleware(object):
-	def process_request(self, request, spider):
-		proxy = random.choice(PROXIES)
-		if proxy['user_pass'] is not None:
-			request.meta['proxy'] = "http://%s" % proxy['ip_port']
-			encoded_user_pass = base64.encodestring(proxy['user_pass'])
-			request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
-			print "**************ProxyMiddleware have pass************" + proxy['ip_port']
-		else:
-			print "**************ProxyMiddleware no pass************" + proxy['ip_port']
-			request.meta['proxy'] = "http://%s" % proxy['ip_port']
+    def process_request(self, request, spider):
+        HTTP_PROXY = 'http://14.21.209.32:9797'
+        request.meta['proxy'] = HTTP_PROXY

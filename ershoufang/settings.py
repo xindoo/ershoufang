@@ -90,10 +90,13 @@ COOKIES_ENABLED = False
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# DOWNLOADER_MIDDLEWARES = {
-#     # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
-#     'ershoufang.middlewares.RotateUserAgentMiddleware':400,
-# }
+HTTP_PROXY = 'http://127.0.0.1:8123'
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+    'ershoufang.middlewares.RotateUserAgentMiddleware':400#,
+    # 'ershoufang.middlewares.ProxyMiddleware': 410
+}
 
 # USER_AGENTS = [
 # 	"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -114,11 +117,11 @@ COOKIES_ENABLED = False
 # 	"Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 # ]
 
-# PROXIES = [
-# 	{'ip_port': '113.250.152.229:8118', 'user_pass': ''},
-# 	{'ip_port': '113.121.254.37:808', 'user_pass': ''},
-# 	{'ip_port': '175.155.24.7:808', 'user_pass': ''},
-# 	{'ip_port': '175.155.24.48:808', 'user_pass': ''},
-# 	{'ip_port': '27.159.127.97:8118', 'user_pass': ''},
-# 	{'ip_port': '61.191.173.31:808', 'user_pass': ''},
-# ]
+PROXIES = [
+	{'ip_port': '113.250.152.229:8118', 'user_pass': ''},
+	{'ip_port': '113.121.254.37:808', 'user_pass': ''},
+	{'ip_port': '175.155.24.7:808', 'user_pass': ''},
+	{'ip_port': '175.155.24.48:808', 'user_pass': ''},
+	{'ip_port': '27.159.127.97:8118', 'user_pass': ''},
+	{'ip_port': '61.191.173.31:808', 'user_pass': ''},
+]
