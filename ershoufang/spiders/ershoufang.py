@@ -16,7 +16,7 @@ class ershoufangSpider(scrapy.Spider):
                 visited = house.xpath(".//div[@class='followInfo']/text()").re("\d+")[1]
                 publishday = house.xpath(".//div[@class='followInfo']/text()").re("\d+")[2]
             except:
-                print "These are some ecxeption"
+                print "These are some ecxeptions"
             else:
                 pass
             yield {
