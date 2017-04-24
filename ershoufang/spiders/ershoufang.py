@@ -23,11 +23,12 @@ class ershoufangSpider(scrapy.Spider):
                     number = house.xpath(".//div[@class='followInfo']/text()").re("\d+")[2]
                     publishday = '365'
                 else:
-                    publishday = number
+                    publishday = house.xpath(".//div[@class='followInfo']/text()").re("\d+")[2]
             except:
                 print "These are some ecxeptions"
             else:
                 pass
+
             yield {
                 'region': house.xpath(".//div[@class='houseInfo']/a/text()").extract(),
                 'url':house.xpath(".//a[@class='img ']/@href").extract(),
