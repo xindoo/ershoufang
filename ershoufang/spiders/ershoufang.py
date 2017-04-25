@@ -41,7 +41,7 @@ class ershoufangSpider(scrapy.Spider):
             }
         page = response.xpath("//div[@class='page-box house-lst-page-box'][@page-data]").re("\d+")
         p = re.compile(r'[^\d]+')
-        if None != page and page[0] != page[1]:
+        if len(page)>1 and page[0] != page[1]:
             next_page = p.match(response.url).group()+str(int(page[1])+1)
             print next_page+"*********************"
             next_page = response.urljoin(next_page)
