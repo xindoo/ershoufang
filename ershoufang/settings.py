@@ -10,7 +10,7 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 # BOT_NAME = 'ershoufang'
-BOT_NAME = '360Spider'
+BOT_NAME = 'Googlebot'
 
 SPIDER_MODULES = ['ershoufang.spiders']
 NEWSPIDER_MODULE = 'ershoufang.spiders'
@@ -28,7 +28,7 @@ NEWSPIDER_MODULE = 'ershoufang.spiders'
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 30
+DOWNLOAD_DELAY = 60
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 2
 CONCURRENT_REQUESTS_PER_IP = 2
