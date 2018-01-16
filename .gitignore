@@ -1,4 +1,4 @@
 *.pyc
 *.csv
 *.json
-/.idea
+.idea
